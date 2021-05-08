@@ -1,0 +1,3 @@
+<!-- Product List -->
+<dynamic-table [hasActions]="model.hasActions" [columns]="model.displayedColumns" [dataSource]="model.products" [actions]="model.actions" [actionData]="model.actionData"
+    (onSort)="model.sortData($event)" (onClickAction)="model.clickAction($event)"></dynamic-table>

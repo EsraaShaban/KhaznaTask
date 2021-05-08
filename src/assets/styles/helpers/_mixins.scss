@@ -1,0 +1,49 @@
+// Variables
+@import"../helpers/variables";
+
+// Mixins
+
+// transition
+@mixin transition($args...){
+  @include prefixer(transition,$args..., webkit moz o ms)
+}
+
+// prefixer
+@mixin prefixer( $property, $value, $prefixes:()){
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property} : $value;
+  }
+  #{$property}:$value;
+}
+
+// font
+@mixin font($fontSize,$fontWeight) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+
+// Media Query
+/* XS screen */
+@mixin maxXScreen(){
+  @media #{$xsScreen} {
+    @content;
+  }
+}
+/* Small screen */
+@mixin minSMscreen(){
+  @media #{$smScreen} {
+    @content;
+  }
+}
+/* Medium screen */
+@mixin minMDscreen(){
+  @media #{$mdScreen} {
+    @content;
+  }
+}
+/* Large screen */
+@mixin minLGscreen(){
+  @media #{$lgScreen} {
+    @content;
+  }
+}

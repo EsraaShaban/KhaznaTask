@@ -1,0 +1,23 @@
+<!-- Table -->
+<mat-table #table mat-table [dataSource]="model.dataSource"  matSort (matSortChange)="model.sortData($event)">
+
+  <ng-container *ngFor="let disCol of model.columns; let colIndex = index" [matColumnDef]="disCol">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{disCol}}</mat-header-cell>
+    <mat-cell *matCellDef="let element" [innerHTML]="element[disCol]"></mat-cell>
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions" >
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <div class="actions">
+        <!-- Action -->
+        <action *ngFor="let action of model.actions" [data]="model.actionData" (onClick)="model.clickAction(element)"></action>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="model.displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: model.displayedColumns;"></mat-row>
+
+</mat-table>

@@ -1,0 +1,82 @@
+// Variables
+@import "../../styles/helpers/variables";
+
+//Mixins
+@import "../../styles/helpers/mixins";
+
+.mat-table {
+  width: 80%;
+  margin: 60px auto;
+  border: 1px solid #ddd;
+}
+
+table, thead, tbody, th, td, tr {
+  @media ($smMaxScreen) {
+    display: grid;
+    position: relative;
+    width:100%;
+    text-align: center;
+  }
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  @media ($smMaxScreen) {
+    padding-left: 0;
+  }
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type { padding-right: 0; }
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell { padding-top: 8px; padding-bottom: 8px; }
+
+// Sort
+::ng-deep .mat-sort-header-container {
+  justify-content: center;
+}
+
+::ng-deep .mat-header-row {
+  @include font(12px,500);
+  background: #f6f6f6;
+  color:#6e768a;
+  @media ($smMaxScreen) {
+    height: auto;
+  }
+}
+
+::ng-deep .mat-header-cell {
+  @include font(14px, 500);
+  @media(max-width:992px) {
+    text-align: center;
+  }
+}
+
+::ng-deep .mat-cell {
+  color:#6e768a;
+  @include font(14px,400);
+  @media (max-width:992px) {
+    justify-content: center;
+  }
+  a {
+    color: #121b2d;
+    @include font(14px,500);
+    @include prefixer(transition, color 0.6s ease-in-out, webkit moz o ms);
+  }
+  img {
+    width: 80px;
+    height: 50px;
+  }
+  span {
+    background: #d32424;
+    color: #fff;
+    padding: 2px 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+  }
+}
+
+::ng-deep .mat-row {
+  @include prefixer(transition, background-color 0.5s ease-in-out, webkit moz o ms);
+  padding: 5px 0;
+  &.mat-footer-row, &.mat-row {
+    @media ($smMaxScreen) {
+      height: auto;
+    }
+  }
+}
